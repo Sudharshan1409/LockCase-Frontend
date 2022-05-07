@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lockcaseapp-dev-184839-authRole",
+      "UnauthRoleArn": "arn:aws:iam::290452190657:role/amplify-lockcaseapp-dev-184839-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::290452190657:role/amplify-lockcaseapp-dev-184839-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-lockcaseapp-dev-184839-deployment",
+      "UnauthRoleName": "amplify-lockcaseapp-dev-184839-unauthRole",
+      "StackName": "amplify-lockcaseapp-dev-184839",
+      "StackId": "arn:aws:cloudformation:ap-south-1:290452190657:stack/amplify-lockcaseapp-dev-184839/36935c10-ce08-11ec-9816-06abc5600c42",
+      "AmplifyAppId": "d3pri9ughqkfqk"
+    },
+    "categories": {
+      "auth": {
+        "lockcaseapp500759b2": {
+          "userPoolId": "ap-south-1_A7TyKc2or",
+          "userPoolName": "LockCase-Userpool",
+          "webClientId": "1juj8i7jtn8iv6h6sfsbi0dfhj",
+          "nativeClientId": "1juj8i7jtn8iv6h6sfsbi0dfhj",
+          "identityPoolId": "ap-south-1:c35ea04d-bd59-4a5b-b68c-6f6b01205d34",
+          "identityPoolName": "LockCase-IdentityPool",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::290452190657:role/LockcaseBackendStack-CognitoDefaultAuthenticatedRo-QH1T6T04ROR7",
+          "authRoleName": "LockcaseBackendStack-CognitoDefaultAuthenticatedRo-QH1T6T04ROR7",
+          "unauthRoleArn": "arn:aws:iam::290452190657:role/LockcaseBackendStack-CognitoDefaultUnauthenticated-1VVCI700EIET7",
+          "unauthRoleName": "LockcaseBackendStack-CognitoDefaultUnauthenticated-1VVCI700EIET7"
+        }
+      }
+    }
+  }
+}

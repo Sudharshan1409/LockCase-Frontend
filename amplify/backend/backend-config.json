@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "lockcaseapp500759b2": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

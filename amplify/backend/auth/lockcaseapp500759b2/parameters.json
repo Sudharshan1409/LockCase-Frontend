@@ -1,0 +1,6 @@
+{
+  "authSelections": "identityPoolAndUserPool",
+  "resourceName": "lockcaseapp500759b2",
+  "serviceType": "imported",
+  "region": "ap-south-1"
+}

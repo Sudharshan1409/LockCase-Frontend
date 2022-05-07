@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import axiosInstance from "../axiosInstance";
 
 export default class HOME extends Component {
+  async callApi() {
+    const result = await axiosInstance.get(`/locks`);
+    console.log("results", result);
+  }
   render() {
+    this.callApi();
     return (
       <>
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="light">
           <thead>
             <tr>
               <th>First Name</th>
