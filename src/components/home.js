@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Table, Container, Row, Col, Button } from "react-bootstrap";
 import axiosInstance from "../axiosInstance";
-import { CREATE_LOCK_COMPONENT } from "./createLock";
-import { CREATE_GROUP_COMPONENT } from "./createGroup";
+import { LOCK_COMPONENT } from "./lock";
+import { GROUP_COMPONENT } from "./group";
 
 export default class HOME extends Component {
   constructor(props) {
@@ -21,6 +20,7 @@ export default class HOME extends Component {
       },
       groupDataParams: {
         name: "",
+        description: "",
       },
     };
   }
@@ -37,6 +37,7 @@ export default class HOME extends Component {
     groupDataParams.name = "";
     this.setState({ groupShowModal: false, groupDataParams: groupDataParams });
   };
+
   groupHandleShow = () => this.setState({ groupShowModal: true });
 
   lockHandleSave = () => {
@@ -72,28 +73,32 @@ export default class HOME extends Component {
     axiosInstance
       .post(`/groups`, {
         name: this.state.groupDataParams.name,
+        description: this.state.groupDataParams.description,
       })
       .then((response) => {
         console.log("response", response.data);
+        let groupData = this.state.groupData;
+        groupData.push(response.data.data);
+        this.setState({
+          groupData: groupData,
+          groupShowModal: false,
+          groupDataParams: {
+            name: "",
+          },
+        });
+        console.log("state", this.state);
       });
-    let groupData = this.state.groupData;
-    groupData.push({
-      name: this.state.groupDataParams.name,
-      value: this.state.groupDataParams.value,
-    });
-    this.setState({
-      groupData: groupData,
-      lockShowModal: false,
-      groupDataParams: {
-        name: "",
-      },
-    });
-    console.log("state", this.state);
   };
 
   groupChangeName = (e) => {
     let groupDataParams = this.state.groupDataParams;
     groupDataParams.name = e.target.value;
+    this.setState({ groupDataParams: groupDataParams });
+  };
+
+  groupChangeDescription = (e) => {
+    let groupDataParams = this.state.groupDataParams;
+    groupDataParams.description = e.target.value;
     this.setState({ groupDataParams: groupDataParams });
   };
 
@@ -116,7 +121,7 @@ export default class HOME extends Component {
   };
 
   componentDidMount() {
-    axiosInstance.get(`/locks`).then((response) => {
+    axiosInstance.get(`/home`).then((response) => {
       console.log("response", response.data.data);
       this.setState({
         lockData: response.data.data.locks,
@@ -138,7 +143,7 @@ export default class HOME extends Component {
 
     return (
       <>
-        <CREATE_LOCK_COMPONENT
+        <LOCK_COMPONENT
           lockDataParams={this.state.lockDataParams}
           lockData={this.state.lockData}
           lockHandleShow={this.lockHandleShow.bind(this)}
@@ -149,12 +154,13 @@ export default class HOME extends Component {
           lockHandleClose={this.lockHandleClose.bind(this)}
           lockHandleSave={this.lockHandleSave.bind(this)}
         />
-        <CREATE_GROUP_COMPONENT
+        <GROUP_COMPONENT
           groupDataParams={this.state.groupDataParams}
           groupData={this.state.groupData}
           groupHandleShow={this.groupHandleShow.bind(this)}
           groupShowModal={this.state.groupShowModal}
           groupChangeName={this.groupChangeName.bind(this)}
+          groupChangeDescription={this.groupChangeDescription.bind(this)}
           groupHandleClose={this.groupHandleClose.bind(this)}
           groupHandleSave={this.groupHandleSave.bind(this)}
         />

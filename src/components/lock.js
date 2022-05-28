@@ -9,7 +9,7 @@ import {
   Table,
 } from "react-bootstrap";
 
-export class CREATE_LOCK_COMPONENT extends Component {
+export class LOCK_COMPONENT extends Component {
   render() {
     return (
       <>

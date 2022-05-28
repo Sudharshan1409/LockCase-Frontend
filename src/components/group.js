@@ -9,7 +9,7 @@ import {
   Table,
 } from "react-bootstrap";
 
-export class CREATE_GROUP_COMPONENT extends Component {
+export class GROUP_COMPONENT extends Component {
   render() {
     return (
       <>
@@ -40,7 +40,7 @@ export class CREATE_GROUP_COMPONENT extends Component {
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Value</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@ export class CREATE_GROUP_COMPONENT extends Component {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{data.name}</td>
-                    <td>{data.value}</td>
+                    <td>{data.description}</td>
                   </tr>
                 );
               })}
@@ -76,6 +76,21 @@ export class CREATE_GROUP_COMPONENT extends Component {
                   name="name"
                   value={this.props.groupDataParams.name}
                   onChange={this.props.groupChangeName}
+                  autoFocus
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Group Description:</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Enter Group Description"
+                  name="description"
+                  value={this.props.groupDataParams.description}
+                  onChange={this.props.groupChangeDescription}
                   autoFocus
                 />
               </Form.Group>
